@@ -9,6 +9,12 @@ info modules
 set name pnap
 get name pnap
 # start applications
-docker run -d -p 6379:6379 --name some-redis redislabs/redismod
-bash startCron.sh
-bash startApi.sh
+`docker run -d -p 6379:6379 --name some-redis redislabs/redismod` 
+`cd /api`   
+`npm i`   
+`cd /crontab`   
+`npm i` 
+
+`bash startCron.sh`   
+`bash startApi.sh`   
+
