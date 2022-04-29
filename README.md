@@ -9,6 +9,13 @@ info modules
 set name pnap
 get name pnap
 # start applications
+
+## with docker
+`docker network create mspr`   
+`docker-compose  up -d`
+# OR
+
+## locally
 `docker run -d -p 6379:6379 --name some-redis redislabs/redismod`   
 `cd /api`   
 `npm i`   
@@ -17,4 +24,6 @@ get name pnap
 
 `bash startCron.sh`   
 `bash startApi.sh`   
+
+
 

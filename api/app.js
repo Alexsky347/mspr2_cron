@@ -7,6 +7,10 @@ const fastify = Fastify({
   bodyLimit: 5048576
 })
 
+fastify.get('/healthcheck', (request, reply) => {
+  return reply.status(200).send();
+})
+
 fastify.get('/api/parking', async () => {
   return await getCache(process.env.CACHE_NAME);
 })
