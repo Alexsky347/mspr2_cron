@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # cron:
+  #   env_file:
+  #       "./.env"
+  #   build:
+  #     context: ./
+  #     dockerfile: ./crontab/Dockerfile
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     - mspr
+
+  api:
+    env_file:
+        "./.env"
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+  #   networks:
+  #     - mspr
+  #   depends_on:
+  #     - cron
+  #   healthcheck:
+  #     test: curl -f http://localhost:8000/api/parking
+  #     interval: 3s
+  #     timeout: 30s
+  #     retries: 90
+
+  cache:
+    image: redislabs/redismod:latest
+    # depends_on:
+    #   - cron
+    #   - api
+    restart: always
+    ports:
+      - '6379:6379'
+    # command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    # volumes: 
+    #   - cache:/data
+    # networks:
+    #   - mspr
+volumes:
+  cache:
+    driver: local
+
+networks:
+  mspr:
+    external:
+      name: mspr
