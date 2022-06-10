@@ -1,40 +1,38 @@
-version: '3.8'
+version: '3.7'
 
 services:
   cache:
+    container_name: cache
     image: redislabs/redismod:latest
-    restart: always
+    restart: unless-stopped
     ports:
-      - '6379:6379'
-    # command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-    # volumes: 
-    #   - cache:/data
-    networks:
-      - mspr
-
+      - "6379:6379"
+    volumes:
+       - ./data:/data
   cron:
     build:
       context: ./crontab
     env_file:
-        "./.env"
+        ./.env
     ports:
       - "5000:5000"
-    networks:
-      - mspr
     depends_on:
-      - cache  
-  
+      - cache
+    links:
+      - cache
+
   api:
     build:
       context: ./api
     env_file:
-        "./.env"
+        ./.env
     ports:
       - "8000:8000"
-    networks:
-      - mspr
     depends_on:
+      - cache
       - cron
+    links:
+      - cache
     healthcheck:
       test: curl -f http://localhost:8000/healthcheck
       interval: 3s
@@ -45,8 +43,3 @@ services:
 volumes:
   cache:
     driver: local
-
-networks:
-  mspr:
-    external:
-      name: mspr

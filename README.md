@@ -1,29 +1,18 @@
-# change var in start.sh if needed
-
-# redis
-docker run -d -p 6379:6379 --name some-redis redislabs/redismod
-docker exec -it some-redis sh
-docker exec -it mspr_fastify_cache_1 sh
-redis-cli
-info modules
-set name pnap
-get name pnap
-# start applications
-
-## with docker
-`docker network create mspr`   
-`docker-compose  up -d`
-# OR
-
-## locally
+# MSPR big data
+## change var in start.sh if needed
+## start applications
 `docker run -d -p 6379:6379 --name some-redis redislabs/redismod`   
 `cd /api`   
 `npm i`   
 `cd /crontab`   
 `npm i` 
 
+`npm i -g nodemon` 
+
 `bash startCron.sh`   
 `bash startApi.sh`   
+
+## navigate to http://localhost:8000/api/parking
 
 
 

@@ -10,7 +10,7 @@ const fastify = Fastify({
 
 fastify.listen(process.env.APP_PORT, process.env.APP_HOST, 511, async (err, address) => {
 
-  cronJob();
+  await cronJob();
   
   if(err) {
     console.error(err)

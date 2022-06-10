@@ -2,16 +2,13 @@ import { createClient } from 'redis';
 
 export const setCache = async (key, value) => {
     try{
-        const client = createClient(process.env.REDIS_PORT, "0.0.0.0");
-        client.on('error', (err) => console.log('Redis Client Error', err));
+        console.log(process.env.REDIS_HOST)
+        const client = createClient({host:process.env.REDIS_HOST, port:process.env.REDIS_PORT});
+        client.on('error', (err) => console.error('Redis Client Error', err));
         await client.connect();
         await client.json.set(key, '$', value);
     } catch (e) {
         console.error(e);
 
-    } finally{
-        // client.quit();
     }
-    
-    
 }
