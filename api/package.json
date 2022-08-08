@@ -7,8 +7,12 @@
   "dependencies": {
     "axios": "^0.27.2",
     "fastify": "^3.28.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "node-cron": "^3.0.0",
     "nodemon": "^2.0.15",
-    "redis": "^4.0.6"
+    "redis": "^4.0.6",
+    "sequelize": "^6.21.3",
+    "sequelize-fastify": "^2.0.0"
   }
 }
