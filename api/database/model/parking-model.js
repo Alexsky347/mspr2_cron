@@ -26,22 +26,22 @@ export const Parking = db.define('parking', {
 
     com_name: { type: Sequelize.STRING, allowNull:false },
 
-    latitude: { type: Sequelize.INTEGER, allowNull:false },
+    latitude: { type: Sequelize.FLOAT, allowNull:false },
 
-    longitude: { type: Sequelize.INTEGER, allowNull:false },
+    longitude: { type: Sequelize.FLOAT, allowNull:false },
 
-    cost_2h: { type: Sequelize.INTEGER, allowNull:false },
+    // cost_2h: { type: Sequelize.INTEGER, allowNull:false },
+    //
+    // cost_3h: { type: Sequelize.INTEGER, allowNull:false },
+    //
+    // cost_4h: { type: Sequelize.INTEGER, allowNull:false },
 
-    cost_3h: { type: Sequelize.INTEGER, allowNull:false },
-
-    cost_4h: { type: Sequelize.INTEGER, allowNull:false },
-
-    free: { type: Sequelize.BOOLEAN, allowNull:false },
+    free: { type: Sequelize.STRING, allowNull:false },
 
     total: { type: Sequelize.STRING, allowNull:false },
 
-    status: { type: Sequelize.BOOLEAN, allowNull:false },
+    status: { type: Sequelize.STRING, allowNull:false },
 
-    datetime: { type: Sequelize.DATE, allowNull:false },
+    date: { type: Sequelize.DATE, allowNull:false }
 });
-await Parking.sync({ force: true });
+await Parking.sync({ force: false });
