@@ -36,9 +36,11 @@ export const Parking = db.define('parking', {
     //
     // cost_4h: { type: Sequelize.INTEGER, allowNull:false },
 
-    free: { type: Sequelize.STRING, allowNull:false },
+    free: { type: Sequelize.INTEGER, allowNull:false },
 
-    total: { type: Sequelize.STRING, allowNull:false },
+    total: { type: Sequelize.INTEGER, allowNull:false },
+
+    number_used: { type: Sequelize.INTEGER, allowNull:false },
 
     status: { type: Sequelize.STRING, allowNull:false },
 
