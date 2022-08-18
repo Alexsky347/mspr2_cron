@@ -8,7 +8,6 @@ export const get = (data) => {
             raw: true,
         }).then(e => {
 
-        // waitForElement(e)
         fs.writeFileSync("media/"+data+".csv", parserCsv(e));
 
             console.log("Done!");
