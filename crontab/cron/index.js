@@ -20,7 +20,5 @@ export const cronJob = async () => {
 };
 
 export function parserCsv(values){
-
-    console.log('testing: '+json2csvParser.parse(values))
     return  json2csvParser.parse(values);
 }

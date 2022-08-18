@@ -9,8 +9,6 @@ export const get = (data) => {
         }).then(e => {
 
         // waitForElement(e)
-        console.log("tamereenstringdeguerre" + JSON.stringify(e));
-
         fs.writeFileSync("media/"+data+".csv", parserCsv(e));
 
             console.log("Done!");
