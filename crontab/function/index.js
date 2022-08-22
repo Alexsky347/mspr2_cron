@@ -59,8 +59,9 @@ const formatObject = async (data) => {
                 latitude: data[key].latitude,
                 com_name: data[key].com_name,
                 longitude: data[key].longitude,
-                free: parkingInfo.park.Free[0],
-                total: parkingInfo.park.Total[0],
+                free: parseInt(parkingInfo.park.Free[0]),
+                total: parseInt(parkingInfo.park.Total[0]),
+                number_used:parseInt(parkingInfo.park.Total[0])-parseInt(parkingInfo.park.Free[0]),
                 status: parkingInfo.park.Status[0],
                 date: await timeParser(parkingInfo.park.DateTime[0])
             }
