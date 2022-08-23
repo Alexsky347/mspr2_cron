@@ -11,7 +11,6 @@ export const cronJob = async () => {
         setCache(process.env.CACHE_NAME, allParkings);
         for (const key of allParkings) {
             get(key.name)
-
         }
         sendToBDD(allParkings);
 

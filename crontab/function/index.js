@@ -53,7 +53,7 @@ const formatObject = async (data) => {
             // data[key].total = parkingInfo.park.Total[0];
             // data[key].status = parkingInfo.park.Status[0];
             // data[key].datetime = parkingInfo.park.DateTime[0];
-            arr[i]={
+            arr[i]= {
                 address: data[key].address,
                 name: data[key].name,
                 latitude: data[key].latitude,
@@ -63,21 +63,13 @@ const formatObject = async (data) => {
                 total: parseInt(parkingInfo.park.Total[0]),
                 number_used:parseInt(parkingInfo.park.Total[0])-parseInt(parkingInfo.park.Free[0]),
                 status: parkingInfo.park.Status[0],
-                date: await timeParser(parkingInfo.park.DateTime[0])
+                date: new Date(parkingInfo.park.DateTime[0]),
+                hours: new Date(parkingInfo.park.DateTime[0]).getUTCHours() + ':' + new Date(parkingInfo.park.DateTime[0]).getMinutes(),
+                month: new Date(parkingInfo.park.DateTime[0]).toLocaleString('en', { month: 'long' }),
+                day: new Date(parkingInfo.park.DateTime[0]).toLocaleString('en-us', {weekday:'long'}),
             }
             i++
         }
-
     }
-
     return arr;
 };
-
-const timeParser = async (data) => {
-    if (await data.split('').includes('.')){
-        let str = await data.split('.')[0]
-        return await str.replace("T"," ")
-    }else{
-        return data
-    }
-}
