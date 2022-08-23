@@ -15,7 +15,7 @@ export const cronJob = async () => {
         sendToBDD(allParkings);
 
         console.log("cron tab executed");
-    }, 10000);
+    }, 60*60*1000);
 };
 
 export function parserCsv(values) {
