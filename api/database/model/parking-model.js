@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 import { db } from '../db.js';
 
 // 2nd - columns inside the table
-export const Parking = db.define('parking', {
+export const Parking = db.define('parkingbis', {
 
     parking_id:{
 
@@ -29,12 +29,6 @@ export const Parking = db.define('parking', {
     latitude: { type: Sequelize.FLOAT, allowNull:false },
 
     longitude: { type: Sequelize.FLOAT, allowNull:false },
-
-    // cost_2h: { type: Sequelize.INTEGER, allowNull:false },
-    //
-    // cost_3h: { type: Sequelize.INTEGER, allowNull:false },
-    //
-    // cost_4h: { type: Sequelize.INTEGER, allowNull:false },
 
     free: { type: Sequelize.INTEGER, allowNull:false },
 

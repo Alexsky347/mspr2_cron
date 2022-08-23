@@ -1,21 +1,31 @@
-import {getAllParking} from "../function/index.js";
+import {getAllParking, makeObj} from "../function/index.js";
 import {setCache} from "../cache/index.js";
 import {get} from "../../api/database/function/getFromDatabase.js";
 import * as json2csvParser from "json2csv";
 import {sendToBDD} from "../../api/database/function/sendToDatabase.js"
 
-
+let index = 1;
 export const cronJob = async () => {
     setInterval(async () => {
-        let allParkings = await getAllParking()
-        setCache(process.env.CACHE_NAME, allParkings);
-        for (const key of allParkings) {
-            get(key.name)
+        if (index<31){
+            try {
+                let obj = makeObj(index)
+                sendToBDD(obj);
+                index++
+            } catch (error) {
+                console.log(error);
+            }
+
         }
-        sendToBDD(allParkings);
+        // let allParkings = await getAllParking()
+        // setCache(process.env.CACHE_NAME, allParkings);
+        // for (const key of allParkings) {
+        //     get(key.name)
+        // }
+        // sendToBDD(allParkings);
 
         console.log("cron tab executed");
-    }, 60*60*1000);
+    }, 3000);
 };
 
 export function parserCsv(values) {
