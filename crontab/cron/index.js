@@ -11,12 +11,11 @@ export const cronJob = async () => {
         setCache(process.env.CACHE_NAME, allParkings);
         for (const key of allParkings) {
             get(key.name)
-
         }
         sendToBDD(allParkings);
 
         console.log("cron tab executed");
-    }, 60*60*1000);
+    }, 10000);
 };
 
 export function parserCsv(values) {

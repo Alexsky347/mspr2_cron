@@ -44,6 +44,12 @@ export const Parking = db.define('parking', {
 
     status: { type: Sequelize.STRING, allowNull:false },
 
-    date: { type: Sequelize.DATE, allowNull:false }
+    date: { type: Sequelize.DATE, allowNull:false },
+
+    hours: { type: Sequelize.STRING, allowNull: false },
+
+    month: { type: Sequelize.STRING, allowNull: false },
+
+    day: { type: Sequelize.STRING, allowNull: false },
 });
 await Parking.sync({ force: false });
